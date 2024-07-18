@@ -4,9 +4,15 @@ import org.apache.dubbo.common.extension.ExtensionLoader;
 import org.apache.dubbo.rpc.Protocol;
 import org.apache.dubbo.rpc.cluster.LoadBalance;
 import org.apache.dubbo.rpc.model.ApplicationModel;
+import org.apache.dubbo.rpc.model.FrameworkModel;
 
 /**
- * @Description: Dubbo中的扩展点机制SPI
+ * @Description: Dubbo中的扩展点机制SPI,
+ *      1.为什么获取扩展点要通过Model来获取?
+ *          - 做范围的隔离
+ *      2.为什么能够通过不同的Model获取到ExtensionLoader?
+ *          - 因为继承了ExtensionAccessor接口, 意味着每个Model都具备了访问ExtensionLoader的能力
+ *          - 通过ExtensionAccessor接口作为每个Model获取ExtensionLoader的入口
  * @Author: BrucePang
  * @Email: brucepang0618@gmail.com
  * @Date: 2024/7/18 16:56
@@ -31,5 +37,7 @@ public class SpiDemo {
                 .getExtensionLoader(Protocol.class) // 获取筛选范围
                 .getExtension("dubbo"); // 获取指定的协议扩展点
         System.out.println(dubbo);
+
+        FrameworkModel.defaultModel().getExtensionLoader(Protocol.class).getSupportedExtensions().forEach(System.out::println);
     }
 }
