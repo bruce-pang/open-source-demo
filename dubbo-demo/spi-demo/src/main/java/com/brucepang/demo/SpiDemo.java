@@ -20,6 +20,8 @@ import org.apache.dubbo.rpc.model.FrameworkModel;
  *          - 2.解析配置文件, 获取到扩展点的名称和实现类
  *          - 3.加载过程中会判断扩展点之间是否会有依赖关系, 如果有会进行依赖注入(Injector)[]
  *           - 3.1 依赖注入有几种情况
+ *              - 3.1.1 SPIExtensionInjector: 从SPI扩展点容器中获取ExtensionLoader
+ *
  *
  * @Author: BrucePang
  * @Email: brucepang0618@gmail.com
