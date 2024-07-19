@@ -13,6 +13,14 @@ import org.apache.dubbo.rpc.model.FrameworkModel;
  *      2.为什么能够通过不同的Model获取到ExtensionLoader?
  *          - 因为继承了ExtensionAccessor接口, 意味着每个Model都具备了访问ExtensionLoader的能力
  *          - 通过ExtensionAccessor接口作为每个Model获取ExtensionLoader的入口
+ *      3.ExtensionLoader的作用?
+ *          - 用于加载指定的扩展点
+ *      4.ExtensionLoader的加载过程?
+ *          - 1.通过ClassLoader加载指定目录下的扩展点配置文件到内存中
+ *          - 2.解析配置文件, 获取到扩展点的名称和实现类
+ *          - 3.加载过程中会判断扩展点之间是否会有依赖关系, 如果有会进行依赖注入(Injector)[]
+ *           - 3.1 依赖注入有几种情况
+ *
  * @Author: BrucePang
  * @Email: brucepang0618@gmail.com
  * @Date: 2024/7/18 16:56
