@@ -1,0 +1,6 @@
+1-从目录下加载对应符合规范的Class
+2-通过InstantiationStrategy实例化上述的Class
+ - 2.1 实例化过程中做依赖注入
+3-ExtensionPostProcessor执行对Bean的后置处理
+4-通过ExtensionDirector进行Class与ExtensionLoader的关系维护
+5-通过ExtensionAccessor对外提供统一的访问
